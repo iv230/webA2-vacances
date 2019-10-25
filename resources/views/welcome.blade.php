@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Goto Montain
+                    Goto Mountain
                 </div>
 
                 <!--
@@ -98,9 +98,10 @@
                 -->
 
                 <div>
-                    
+                    Please insert last articles here. For now, you can click <a href="./articles">here</a> to see the list.
                 </div>
             </div>
         </div>
     </body>
 </html>
+docker-comp

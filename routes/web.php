@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/articles', 'ArticleController');
+
+Route::get('/articles/{id}/delete', 'ArticleController@destroy');

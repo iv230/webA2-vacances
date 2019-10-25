@@ -5,8 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article as Article;
 
+use App\Repositories\ArticleRepository;
+
 class ArticleController extends Controller
 {
+    protected $articleRepository;
+
+    public function __construct(ArticleRepository $articleRepository)
+    {
+        $this->articleRepository = $articleRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +26,7 @@ class ArticleController extends Controller
       $articles = Article::all();
       return view('articles.index', array('articles' => $articles));
     }
-        
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +34,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -36,7 +45,9 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = $this->articleRepository->store($request->all());
+
+        return redirect('user')->withOk("L'article " . $article->name . " a été créé.");
     }
 
     /**
@@ -82,6 +93,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->articleRepository->destroy($id);
+
+        return redirect('articles');
     }
 }
