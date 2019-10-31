@@ -21,4 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/articles', 'ArticleController');
 
-Route::get('/articles/{id}/delete', 'ArticleController@destroy');
+Route::get('/articles/{id}/delete', 'ArticleController@destroy')->where('id', '[0-9]+');
+Route::get('/articles/{id}/edit', 'ArticleController@edit')->where('id', '[0-9]+');
+//Route::post('/articles/create', 'ArticleController@create');
+Route::post('/articles/{id}/edit', 'ArticleController@edit')->where('id', '[0-9]+');

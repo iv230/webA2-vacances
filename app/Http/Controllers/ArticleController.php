@@ -47,7 +47,8 @@ class ArticleController extends Controller
     {
         $article = $this->articleRepository->store($request->all());
 
-        return redirect('user')->withOk("L'article " . $article->name . " a été créé.");
+        return redirect('articles')->withOk("L'article " . $article->name . " a été créé.");
+        //return('Article créé');
     }
 
     /**
@@ -70,7 +71,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::find($id);
+        return view('articles.edit', array('article' => $article));
     }
 
     /**
@@ -82,7 +84,9 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->articleRepository->update($id, $request->all());
+
+        return redirect('articles')->withOk("L'article " . $request->input('name') . " a été modifié.");
     }
 
     /**
