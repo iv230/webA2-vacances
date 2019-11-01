@@ -25,5 +25,6 @@
                     <a class="remove-button" type="button" href="/articles/{{ $article->id }}/delete">Supprimer</a> </td>
             </tr>
     </table>
+    <a href="/articles/">Retour à l'index</a>
   </body>
 </html>

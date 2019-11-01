@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Modifier Article #{{ $article->id }}</h1>
-<form action="/articles" method="POST" class="form-beau">
+<form action="/articles/{{ $article->id }}" method="POST" class="form-beau">
     <div class="input-group">
         <label>Nom</label>
         <input type="text" name="name" placeholder="Nom de l'article" value="{{ $article->name }}"/>
@@ -23,6 +23,9 @@
     <button type="submit">Valider</button>
     <iinput type="hidden" name="id" value="{{ $article->id }}"></iinput>
     {{ csrf_field() }}
+    {{ method_field('PATCH') }}
 </form>
+<a href="/articles/{{ $article->id }}">Retour à l'article</a>
+<a href="/articles/">Retour à l'index</a>
 </body>
 </html>
